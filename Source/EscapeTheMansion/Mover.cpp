@@ -16,9 +16,9 @@ UMover::UMover()
 void UMover::BeginPlay()
 {
 	Super::BeginPlay();
-
-	OriginalLocation = GetOwner()->GetActorLocation();
 	
+	//Saves the start location
+	OriginalLocation = GetOwner()->GetActorLocation();
 }
 
 
@@ -26,21 +26,27 @@ void UMover::BeginPlay()
 void UMover::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
-
+	
+	//Sets the TargetLocation to its OriginalLocation
 	FVector TargetLocation = OriginalLocation;
 
+	//If it should move
 	if (ShouldMove)
 	{
+		//Sets the TargetLocation MoveOffset amount from its OriginalLocation
 		TargetLocation = OriginalLocation + MoveOffset;
 	}
-
+	//Gets the CurrentLocation of the actor
 	FVector CurrentLocation = GetOwner()->GetActorLocation();
+	//Sets the speed based on the MoveOffset amount and MoveTime
 	float Speed = MoveOffset.Length() / MoveTime;
-
+	//Calculates the NewLocation with VInterpConstantTo function (It is like lerp in bluprint)
 	FVector NewLocation = FMath::VInterpConstantTo(CurrentLocation, TargetLocation, DeltaTime, Speed);
+	//Sets the actor location to the new one
 	GetOwner()->SetActorLocation(NewLocation);
 }
 
+//If you don't put this if it might cause the engine to crash
 void UMover::SetShouldMove(bool Triggered)
 {
 	if (this != nullptr)

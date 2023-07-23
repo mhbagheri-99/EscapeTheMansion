@@ -28,17 +28,22 @@ public:
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
+	//Sets the mover component of the movable/triggered object to control it
 	UFUNCTION(BlueprintCallable)
 		void SetMover(UMover* Mover);
 
+	//A boolean that shows if the mechanism is triggered or not
 	UFUNCTION(BlueprintCallable)
 		bool GetTriggered();
 
+	//A boolean that would be true if and only if there is a change in the triggered state of the mechanism
+	//Useful for playing sound effects such as opening the door
 	UFUNCTION(BlueprintCallable)
 		bool GetChangedState();
 
 
 private:
+	//TriggeringActorTag is the tag of the object(s) that can trigger the mechanism
 	UPROPERTY(EditAnywhere)
 		FName TriggeringActorTag = "";
 

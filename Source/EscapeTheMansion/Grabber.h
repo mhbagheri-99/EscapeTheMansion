@@ -32,12 +32,16 @@ public:
 		void Grab();
 
 private:
+	//Max distance that you can grab an object from
 	UPROPERTY(EditAnywhere)
 		float MaxGrabDist = 160;
 
+	//Distance between the player and the grabbed object
 	UPROPERTY(EditAnywhere)
 		float HoldDist = 80;
 	
+	//The size of the sphere that can trigger the seizable object (the bigger the less precision 
+	//in grabbing objects close to each other)
 	UPROPERTY(EditAnywhere)
 		float GrabRadius = 50;
 

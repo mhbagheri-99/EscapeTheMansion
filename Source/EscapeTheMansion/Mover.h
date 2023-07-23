@@ -22,21 +22,26 @@ public:
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
+	//(De)Activates the component
 	void SetShouldMove(bool Triggered);
 	
 	UFUNCTION(BlueprintCallable)
 		bool GetShouldMove();
 
 private:
+	//How much it should move
 	UPROPERTY(EditAnywhere)
 	FVector MoveOffset;
 
+	//How long it should take to move
 	UPROPERTY(EditAnywhere)
 	float MoveTime = 4.0;
 
+	//Activation state
 	UPROPERTY(EditAnywhere)
 	bool ShouldMove = false;
 
+	//Original starting location
 	FVector OriginalLocation;
 		
 };
