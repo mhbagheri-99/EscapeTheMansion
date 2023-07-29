@@ -21,6 +21,8 @@ Some features that I am planning to implement and add to the game and publish ar
 - An inspection system, like when hovering over an object shows the available action such as pick up, grab or open
 - Add a text system to tell a little story about the game to make it a more immersive experience
 - Adding more sound effects to the level, such as foot steps while walking or interacting with objects (Locked door, picking up the key and sliding wall sound effect is already done)
+- Add an slotting and unslotting Mechanism
+- Add Music playing feature to the Record Player object
 - And finally more puzzles and a longer playtime
 
 ## Assets and tutorials used in this project
